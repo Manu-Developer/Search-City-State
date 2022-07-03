@@ -1,0 +1,71 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: #ffc600;
+  font-size: 62.5%;
+  font-weight: 200;
+  font-family: "helvetica neue";
+}
+
+li {
+  list-style: none;
+}
+
+.form {
+  max-width: 45rem;
+  padding: 0 1.5rem;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form__search {
+  position: relative;
+  padding: 1.5rem;
+  outline: 0;
+  text-align: center;
+  z-index: 2;
+  font-size: 3rem;
+  border: 1rem solid #f7f7f7;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+}
+.form__suggestions {
+  position: relative;
+}
+.form__suggestions .form__item {
+  margin: 0;
+  padding: 20px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  background: white;
+  transition: background 0.2s;
+  border-bottom: 1px solid #d8d8d8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+}
+.form__suggestions .form__item:nth-child(even) {
+  transform: perspective(100px) rotateX(2deg) translateY(2px) scale(1.001);
+  background: linear-gradient(to bottom, #ffffff 0%, #efefef 100%);
+}
+.form__suggestions .form__item:nth-child(odd) {
+  transform: perspective(100px) rotateX(-2deg) translateY(3px);
+  background: linear-gradient(to top, #ffffff 0%, #efefef 100%);
+}
+
+span.population {
+  font-size: 15px;
+}
+
+.highLight {
+  background: #ffc600;
+}
+
+/*# sourceMappingURL=styles.css.map *//*# sourceMappingURL=styles.css.map */
