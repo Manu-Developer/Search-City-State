@@ -6,7 +6,7 @@ const endPoint = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb
 
 fetch(endPoint)
 	.then((data) => data.json())
-	.then((data) => cities = data);
+	.then((data) => cities.push(...data));
 
 const findMatches = (wordMatch, cities) => {
 	const REGEX = new RegExp(wordMatch, "gi");
@@ -15,11 +15,13 @@ const findMatches = (wordMatch, cities) => {
 
 const displayMatches = (e) => {
 	const inputValue = e.target.value;
+	const REGEX = new RegExp(inputValue, "gi");
 	const matchResults = findMatches(inputValue, cities);
+
 	const HTML = matchResults
 		.map((place) => {
-			const cityName = place.city.replace(inputValue, `<span class="highLight">${inputValue}</span>`);
-			const stateName = place.state.replace(inputValue, `<span class="highLight">${inputValue}</span>`);
+			const cityName = place.city.replace(REGEX, `<span class="highLight">${inputValue}</span>`);
+			const stateName = place.state.replace(REGEX, `<span class="highLight">${inputValue}</span>`);
 
 			return `
         		<li class="form__item">
