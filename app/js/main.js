@@ -1,12 +1,12 @@
 const searchInput = document.querySelector(".form__search");
 const suggestions = document.querySelector(".form__suggestions");
 
-const cities = [];
+let cities = [];
 const endPoint = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
 
 fetch(endPoint)
 	.then((data) => data.json())
-	.then((data) => cities.push(...data));
+	.then((data) => cities = data);
 
 const findMatches = (wordMatch, cities) => {
 	const REGEX = new RegExp(wordMatch, "gi");
@@ -14,12 +14,12 @@ const findMatches = (wordMatch, cities) => {
 };
 
 const displayMatches = (e) => {
-	const matchResults = findMatches(e.target.value, cities);
+	const inputValue = e.target.value;
+	const matchResults = findMatches(inputValue, cities);
 	const HTML = matchResults
 		.map((place) => {
-			const REGEX = new RegExp(e.target.value, "gi");
-			const cityName = place.city.replace(REGEX, `<span class="highLight">${e.target.value}</span>`);
-			const stateName = place.state.replace(REGEX, `<span class="highLight">${e.target.value}</span>`);
+			const cityName = place.city.replace(inputValue, `<span class="highLight">${inputValue}</span>`);
+			const stateName = place.state.replace(inputValue, `<span class="highLight">${inputValue}</span>`);
 
 			return `
         		<li class="form__item">
