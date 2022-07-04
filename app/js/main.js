@@ -6,7 +6,7 @@ const endPoint = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb
 
 fetch(endPoint)
 	.then((data) => data.json())
-	.then((data) => cities.push(...data));
+	.then((data) => (cities = data));
 
 const findMatches = (wordMatch, cities) => {
 	const REGEX = new RegExp(wordMatch, "gi");
